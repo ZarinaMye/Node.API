@@ -1,11 +1,15 @@
 //lektion 7 server.js = API delen 
 const express = require('express');
+const cors = require('cors');
 const Blockchain = require('./Blockchain');
 
 const app = express();
 const blockchain = new Blockchain();
 
 app.use(express.json()); //middlewear - talar om att vi vill använda bodyparse inbyggt i express
+// Detta är snik varianten
+// Som tillåter alla att kommunicera med mina endpoints...
+app.use(cors());
 
 //skapar endpoints
 //Hämtar och listar blocken i kedjan
