@@ -5,7 +5,7 @@ const Blockchain = require('./Blockchain');
 const app = express();
 const blockchain = new Blockchain();
 
-app.use(express.json()); //talar om att vi vill anvönda json mha inbyggt i express
+app.use(express.json()); //middlewear - talar om att vi vill använda bodyparse inbyggt i express
 
 //skapar endpoints
 //Hämtar och listar blocken i kedjan
