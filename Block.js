@@ -1,4 +1,4 @@
-const GENESIS_DATA = require("../config");
+const GENESIS_DATA = require("./config");
 const crypto = require("./generateHash");
 
 class Block {

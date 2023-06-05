@@ -1,16 +1,12 @@
-// Importera Node.js egna crypto bibliotek...
-
-const crypto = require('crypto');
+const crypto = require('crypto'); //Node´s kryptobiliotek
 
 const generateHash = (...args) => {
-  // Skapa ett objekt ifrån nodes crypto bibliotek...
-  // Ange algoritm(sha256)
-  const hash = crypto.createHash('sha256');
-  // Skapa en hash av våra inskickade argument...
-  hash.update(args.sort().join(' '));
-  // Beräkna värdet baserat på algoritm, inskickade argument och
-  // skapa en output i hex format...
-  return hash.digest('hex');
+  
+  const hash = crypto.createHash('sha256'); //ange algoritm/sha256
+  
+  hash.update(args.sort().join(' ')); //hash skapas
+  
+  return hash.digest('hex'); //output i hex-format
 };
 
 module.exports = generateHash;

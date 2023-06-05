@@ -17,6 +17,17 @@ main {
 
 ul {
   list-style: none;
+  font-size: 1rem ;
+  margin-left: -2.5rem;
+}
+
+li {
+  padding: 3px;
+  outline: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+  max-width: 750px;
+  border-radius: 5px;
 }
 
 input {
@@ -38,6 +49,7 @@ input {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
 .btn:hover {

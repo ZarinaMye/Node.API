@@ -6,12 +6,13 @@ const Blockchain = ({ blocks, onAddBlock }) => {
   return (
     <>
       <form onSubmit={onAddBlock}>
+        <p>Enter data you want to save in the blockchain</p>
         <div className="form">
           <input type='text' name='data' required/>
-          <button className="btn">Add Block</button>
+          <button className="btn">Create Block</button>
         </div>
       </form>
-      <h4>Saved block-data:</h4>
+    {/*   <h3>Saved block-data:</h3> */}
       <ul>
         {blocks.map((block) => (
           <Fragment key={block.hash}>
@@ -19,7 +20,7 @@ const Blockchain = ({ blocks, onAddBlock }) => {
           </Fragment>
         ))}
       </ul>
-      <button className="btn">Validate chain</button>
+   {/*    <button className="btn">Validate chain</button> */}
     </>
   );
 };
