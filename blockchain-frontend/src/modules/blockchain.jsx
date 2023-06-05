@@ -1,16 +1,17 @@
 import { Fragment } from 'react';
 import Block from './Block';
-import styles from "../app";
+import "../app.css";
 
 const Blockchain = ({ blocks, onAddBlock }) => {
   return (
     <>
       <form onSubmit={onAddBlock}>
-        <div className={styles['form-controls']}>
-          <input type='text' name='data' />
-          <button className={styles.btn}>Add Block</button>
+        <div className="form">
+          <input type='text' name='data' required/>
+          <button className="btn">Add Block</button>
         </div>
       </form>
+      <h4>Saved block-data:</h4>
       <ul>
         {blocks.map((block) => (
           <Fragment key={block.hash}>
@@ -18,6 +19,7 @@ const Blockchain = ({ blocks, onAddBlock }) => {
           </Fragment>
         ))}
       </ul>
+      <button className="btn">Validate chain</button>
     </>
   );
 };

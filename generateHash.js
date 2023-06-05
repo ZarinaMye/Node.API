@@ -2,7 +2,7 @@
 
 const crypto = require('crypto');
 
-const createHash = (...args) => {
+const generateHash = (...args) => {
   // Skapa ett objekt ifrån nodes crypto bibliotek...
   // Ange algoritm(sha256)
   const hash = crypto.createHash('sha256');
@@ -13,4 +13,4 @@ const createHash = (...args) => {
   return hash.digest('hex');
 };
 
-module.exports = createHash;
+module.exports = generateHash;

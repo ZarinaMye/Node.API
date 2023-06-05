@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./app.css";
+import "./app.css";
 import Blockchain from "./modules/blockchain";
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <main>
-      <article className={styles.container}>
+      <article className="container">
         <h1>Blockchain Client</h1>
         <section>
           <Blockchain blocks={blockchain} onAddBlock={onAddBlockHandler} />

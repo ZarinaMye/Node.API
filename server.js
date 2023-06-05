@@ -1,23 +1,21 @@
-//lektion 7 server.js = API delen 
+//lektion 7 server.js = API backend 
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); //=middleware
 const Blockchain = require('./Blockchain');
 
 const app = express();
 const blockchain = new Blockchain();
 
-app.use(express.json()); //middlewear - talar om att vi vill använda bodyparse inbyggt i express
-// Detta är snik varianten
-// Som tillåter alla att kommunicera med mina endpoints...
-app.use(cors());
+app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
+app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
 
 //skapar endpoints
-//Hämtar och listar blocken i kedjan
+//Hämtar och Listar blocken i kedjan
 app.get('/api/1/blocks', (req, res) => {
     res.status(200).json(blockchain.chain); //200 = get
 });
 
-//Lägger till ett nytt block 
+//Skickar data och Lägger till ett nytt block 
 app.post('/api/1/blocks', (req, res) => { //endel skriver mine isf blocks..
     const { data } = req.body;
     const block = blockchain.addBlock({ data });
