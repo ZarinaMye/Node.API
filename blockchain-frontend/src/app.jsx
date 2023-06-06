@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./app.css";
-import Blockchain from "./modules/blockchain";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './app.css';
+import Blockchain from './modules/blockchain';
 
 const App = () => {
   const [blockchain, setBlockchain] = useState([]);
@@ -9,27 +9,29 @@ const App = () => {
 
   const loadBlockchain = async () => {
     const { data } = await axios.get(url);
-    console.log(data);
     setBlockchain(data);
+    console.log(data);
   };
 
   useEffect(() => {
     loadBlockchain();
   }, []);
 
-  const onAddBlockHandler = async (e) => {
-    e.preventDefault();
-    const data = e.target.data.value;
-    const newBlock = { data };
-    const response = await axios.post(url, newBlock);
-    console.log(response);
-    loadBlockchain();
+  const onAddBlockHandler = async (activity) => {
+    try {
+      const newBlock = { data: activity };
+      const response = await axios.post(url, newBlock);
+      console.log(response); 
+      loadBlockchain();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <main>
       <article className="container">
-        <h1>Blockchain Client</h1>
+        <h1>My activity Blockchain</h1>
         <section>
           <Blockchain blocks={blockchain} onAddBlock={onAddBlockHandler} />
         </section>

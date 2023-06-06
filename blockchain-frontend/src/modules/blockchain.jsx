@@ -1,26 +1,55 @@
-import { Fragment } from 'react';
+import { useState } from 'react';
 import Block from './Block';
-import "../app.css";
+import axios from 'axios';
+import '../app.css';
 
 const Blockchain = ({ blocks, onAddBlock }) => {
+
+  const [generatedActivity, setGeneratedActivity] = useState('');
+
+  const generateActivity = async () => {
+
+    try {
+      const response = await axios.get('http://www.boredapi.com/api/activity');
+      const activity = response.data.activity;
+      setGeneratedActivity(activity);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const saveActivity = () => {
+    
+    onAddBlock(generatedActivity);
+    setGeneratedActivity(' ');
+  };
+
   return (
     <>
-      <form onSubmit={onAddBlock}>
-        <p>Enter data you want to save in the blockchain</p>
-        <div className="form">
-          <input type='text' name='data' required/>
-          <button className="btn">Create Block</button>
-        </div>
-      </form>
-    {/*   <h3>Saved block-data:</h3> */}
+      <div className="activity">
+        <p>
+          Never get bored, generate an activity and when you find a good one, 
+          save it to the blockchain.
+        </p>
+        <button className="btn" onClick={generateActivity}>
+          Generate Activity
+        </button>
+        {generatedActivity && (
+          <>
+            <p className="activityP">Generated Activity: {generatedActivity}</p>
+            <button className="btn" onClick={saveActivity}>
+              Save Activity
+            </button>
+          </>
+        )}
+      </div>
+
+      <h3>Saved activities in the Blockchain:</h3>
       <ul>
         {blocks.map((block) => (
-          <Fragment key={block.hash}>
-            <Block block={block} />
-          </Fragment>
+          <Block key={block.hash} block={block} />
         ))}
       </ul>
-   {/*    <button className="btn">Validate chain</button> */}
     </>
   );
 };

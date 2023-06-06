@@ -2,8 +2,9 @@
 body {
   font-family:'Courier New', Courier, monospace;
   line-height: 1.2;
-  color: #fff;
+  color: black;
   background-image: url("../background.jpg");
+  background-size: cover;
 }
 
 .container {
@@ -28,6 +29,7 @@ li {
   margin-bottom: 5px;
   max-width: 750px;
   border-radius: 5px;
+  color: #fff;
 }
 
 input {
@@ -50,15 +52,21 @@ input {
   cursor: pointer;
   border-radius: 5px;
   font-size: 1rem;
+  max-width: 200px;
 }
 
 .btn:hover {
   background-color: #052675eb;
 }
 
-.form {
+.activity {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin: 1rem 0;
+}
+
+.activityP {
+  font-size: 1.2rem;
 }
 
