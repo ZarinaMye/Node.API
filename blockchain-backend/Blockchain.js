@@ -8,10 +8,15 @@ class Blockchain {
     this.chain = [Block.genesis()];
   };
 
+  getBlocks() {
+    return this.chain;
+  }
+
   addBlock({ data }) {
 
-    const addedBlock = Block.mineBlock({ lastBlock: this.chain.at(-1), data }); //data måste finnas för att nytt block ska skapas
-    this.chain.push(addedBlock); //lägger till block till kedjan
+    //Validerar att data finns, annars spars inte blocket
+    const addedBlock = Block.mineBlock({ lastBlock: this.chain.at(-1), data }); 
+    this.chain.push(addedBlock); 
     return addedBlock;
   };
 
@@ -25,20 +30,23 @@ class Blockchain {
   };
 
   static isValid(chain) {
-
+     
+    //Validerar att genesis är första blocket
     if (JSON.stringify(chain.at(0)) !== JSON.stringify(Block.genesis())) {
-      return false; //kollar att genesis är först 
+      return false; 
     };
 
     for (let i = 1; i < chain.length; i++) {
 
       const { timestamp, data, hash, lastHash } = chain.at(i);
-
+       
+      //Validerar att föregeående hash också är lasthash i efterföljande block 
       const prevHash = chain[i - 1].hash;
-      if (lastHash !== prevHash) return false; //kollar att föregående hash också är lasthash i efterföljande block
+      if (lastHash !== prevHash) return false; 
 
+      //Validerar hashen för att kolla om blocket är giltigt
       const validHash = crypto(timestamp, data, lastHash);
-      if (hash !== validHash) return false; //jämför hashen för att kolla om blocket är giltigt 
+      if (hash !== validHash) return false; 
     };
 
     return true;

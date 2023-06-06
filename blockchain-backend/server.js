@@ -1,8 +1,29 @@
-// lektion 7 server.js = API backend
+/* const express = require('express');
+const cors = require('cors');
+const Blockchain = require('./Blockchain');
+const blockController = require('./controllers/blockController');
+
+const app = express();
+const blockchain = new Blockchain();
+
+app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
+app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
+
+// Routing för block
+app.use('/api/1/blocks', blockController);
+
+const PORT = 5001;
+
+app.listen(PORT, () => {
+  console.log(`Server is up and running on port: ${PORT}`);
+}); */
+
+
+//server.js = API backend
 const express = require('express');
 const cors = require('cors'); //=middleware
 const Blockchain = require('./Blockchain');
-const { getBlocks, addBlock } = require('./blockController');
+const { getBlocks, addBlock } = require('./controllers/blockController');
 
 const app = express();
 const blockchain = new Blockchain();
@@ -23,7 +44,7 @@ console.log("Server is up and running on port: ${PORT}")
 );
 
 
-/* //lektion 7 server.js = API backend 
+/* ///////////////////////////
 const express = require('express');
 const cors = require('cors'); //=middleware
 const Blockchain = require('./Blockchain');

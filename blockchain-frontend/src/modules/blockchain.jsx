@@ -36,7 +36,7 @@ const Blockchain = ({ blocks, onAddBlock }) => {
         </button>
         {generatedActivity && (
           <>
-            <p className="activityP">Generated Activity: {generatedActivity}</p>
+            <p className="activityP">Generated activity: {generatedActivity}</p>
             <button className="btn" onClick={saveActivity}>
               Save Activity
             </button>
@@ -44,7 +44,6 @@ const Blockchain = ({ blocks, onAddBlock }) => {
         )}
       </div>
 
-      <h3>Saved activities in the Blockchain:</h3>
       <ul>
         {blocks.map((block) => (
           <Block key={block.hash} block={block} />

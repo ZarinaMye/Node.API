@@ -1,5 +1,7 @@
 const Block = ({ block }) => {
+
     return (
+        
         <li>
             Data: <strong>{block.data}</strong><br />
             Timestamp: {block.timestamp}<br />
