@@ -1,4 +1,29 @@
-//lektion 7 server.js = API backend 
+// lektion 7 server.js = API backend
+const express = require('express');
+const cors = require('cors'); //=middleware
+const Blockchain = require('./Blockchain');
+const { getBlocks, addBlock } = require('./blockController');
+
+const app = express();
+const blockchain = new Blockchain();
+
+app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
+app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
+
+// Hämtar och Listar blocken i kedjan
+app.get('/api/1/blocks', getBlocks);
+
+// Skickar data och Lägger till ett nytt block
+app.post('/api/1/blocks', addBlock);
+
+const PORT = 5001;
+
+app.listen(PORT, () =>
+console.log("Server is up and running on port: ${PORT}")
+);
+
+
+/* //lektion 7 server.js = API backend 
 const express = require('express');
 const cors = require('cors'); //=middleware
 const Blockchain = require('./Blockchain');
@@ -29,11 +54,4 @@ const PORT = 5001;
 
 app.listen(PORT, () =>
   console.log(`Server is up and running on port: ${PORT}`)
-);
-
-
-
-//const api_key = 4hW+37LGKqcFMv8506DaKA==JC1GrYusCFFhnIMf;
-//const base_URL = https://api.api-ninjas.com/v1/riddles; 
-
-//API ninja 
+); */
