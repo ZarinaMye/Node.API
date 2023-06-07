@@ -1,7 +1,7 @@
 //server.js = API backend
 const express = require('express');
 const cors = require('cors'); //=middleware
-const Blockchain = require('./Blockchain');
+const Blockchain = require('./components/Blockchain');
 const { getBlocks, addBlock } = require('./controllers/blockController');
 const dotenv = require('dotenv');
 
@@ -13,9 +13,11 @@ const blockchain = new Blockchain();
 app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
 app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
 
+//GET
 // Hämtar och Listar blocken i kedjan
 app.get('/api/1/blocks', getBlocks);
 
+//POST
 // Skickar data och Lägger till ett nytt block
 app.post('/api/1/blocks', addBlock);
 
@@ -25,7 +27,7 @@ app.listen(PORT, () =>
 console.log( `Server är igång på port: ${PORT} och kör i ${process.env.NODE_ENV} läge`)
 );
 
-////// FÖRSÖK MED ROUTING //////
+////// Router, men ej löst.. //////
 /* const express = require('express');
 /* const cors = require('cors');
 const Blockchain = require('./Blockchain');
