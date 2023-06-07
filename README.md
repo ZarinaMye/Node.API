@@ -7,9 +7,9 @@ Inlämningsuppgit 1 i Node-kursen
 
 Zarinas kom ihåg 
 
-1. Öppna front-end npm start
+1. Öppna front-end -> npm start
 
-2. Öppna server.js npm run dev
+2. Öppna server.js -> npm run dev
 
 
 installerat i frontend:

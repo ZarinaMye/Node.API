@@ -56,8 +56,7 @@ const Blockchain = ({ blocks, onAddBlock }) => {
 export default Blockchain;
 
 
-
-///////// Med input fält ist API, för att skriva in data i blocken //////////
+///////// Med input fält för text som data i blocken ist API, tyckte API var roligare.. //////////
 
 /* import { Fragment } from 'react';
 import Block from './Block';
