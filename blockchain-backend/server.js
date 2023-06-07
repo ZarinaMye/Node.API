@@ -1,5 +1,33 @@
+//server.js = API backend
+const express = require('express');
+const cors = require('cors'); //=middleware
+const Blockchain = require('./Blockchain');
+const { getBlocks, addBlock } = require('./controllers/blockController');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './config/config.env' });
+
+const app = express();
+const blockchain = new Blockchain();
+
+app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
+app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
+
+// Hämtar och Listar blocken i kedjan
+app.get('/api/1/blocks', getBlocks);
+
+// Skickar data och Lägger till ett nytt block
+app.post('/api/1/blocks', addBlock);
+
+const PORT = process.env.PORT || 5010;
+
+app.listen(PORT, () =>
+console.log( `Server är igång på port: ${PORT} och kör i ${process.env.NODE_ENV} läge`)
+);
+
+////// FÖRSÖK MED ROUTING //////
 /* const express = require('express');
-const cors = require('cors');
+/* const cors = require('cors');
 const Blockchain = require('./Blockchain');
 const blockController = require('./controllers/blockController');
 
@@ -16,32 +44,7 @@ const PORT = 5001;
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port: ${PORT}`);
-}); */
-
-
-//server.js = API backend
-const express = require('express');
-const cors = require('cors'); //=middleware
-const Blockchain = require('./Blockchain');
-const { getBlocks, addBlock } = require('./controllers/blockController');
-
-const app = express();
-const blockchain = new Blockchain();
-
-app.use(express.json()); //middleware - talar om att vi vill använda bodyparse inbyggt i express
-app.use(cors()); // middleware - öppnar upp för anrop varsom helst ifrån(säkerhetsrisk!) att kommunicera med mina endpoints...
-
-// Hämtar och Listar blocken i kedjan
-app.get('/api/1/blocks', getBlocks);
-
-// Skickar data och Lägger till ett nytt block
-app.post('/api/1/blocks', addBlock);
-
-const PORT = 5001;
-
-app.listen(PORT, () =>
-console.log("Server is up and running on port: ${PORT}")
-);
+}); */ 
 
 
 /* ///////////////////////////
