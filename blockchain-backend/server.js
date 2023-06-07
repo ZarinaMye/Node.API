@@ -1,6 +1,6 @@
 //server.js = API backend
 const express = require('express');
-const cors = require('cors'); //=middleware
+const cors = require('cors');
 const Blockchain = require('./components/Blockchain');
 const { getBlocks, addBlock } = require('./controllers/blockController');
 const dotenv = require('dotenv');

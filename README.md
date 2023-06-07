@@ -1,9 +1,15 @@
 # Node.API
 Inlämningsuppgit 1 i Node-kursen 
 
-Öppna front-end npm start
 
-Öppna server.js npm run dev
+
+
+
+Zarinas kom ihåg 
+
+1. Öppna front-end npm start
+
+2. Öppna server.js npm run dev
 
 
 installerat i frontend:

@@ -24,7 +24,7 @@ class Blockchain {
 
     if (chain.length <= this.chain.length) return; //om ny kedja ej längre, ersätt ej
 
-    if (!Blockchain.isValid(chain)) return; //om ny kedja ej är val, gör inget
+    if (!Blockchain.isValid(chain)) return; //om ny kedja ej är val, ersätt ej
 
     this.chain = chain;
   };
@@ -44,7 +44,7 @@ class Blockchain {
       const prevHash = chain[i - 1].hash;
       if (lastHash !== prevHash) return false; 
 
-      //Validerar hashen för att kolla om blocket är giltigt
+      //Validerar/jämför hasharna för att kolla om blocket är giltigt
       const validHash = crypto(timestamp, data, lastHash);
       if (hash !== validHash) return false; 
     };
